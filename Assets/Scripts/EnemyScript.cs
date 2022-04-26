@@ -21,7 +21,7 @@ public class EnemyScript : MonoBehaviour
     public void Damage(int damageAmount)
     {
         currentHealth -= damageAmount;
-        Debug.Log(currentHealth);
+        Debug.Log(currentHealth); 
         if(currentHealth<=0)
         {
             DeadMethod();

@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
-    [SerializeField] private float playerSpeed = 10f;
+    [SerializeField] private float playerSpeed;
     Animator animator;
-    [SerializeField] private float rotateSpeed;
+    [SerializeField] private float playerRotateSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +23,15 @@ public class PlayerMovement : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal");
         float inputZ = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(inputX, 0f, inputZ);
-        controller.Move(movement * Time.deltaTime);
+        controller.SimpleMove(movement * playerSpeed * Time.deltaTime);
 
         animator.SetFloat("Speed", movement.magnitude);
-        if (movement.magnitude > 0f)
+
+
+        transform.Rotate(Vector3.up, inputX * playerRotateSpeed * Time.deltaTime);
+        if (inputZ != 0)
         {
-            Quaternion tempDirection = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Slerp(tempDirection, transform.rotation, Time.deltaTime * rotateSpeed);
+            controller.SimpleMove(transform.forward * Time.deltaTime);
         }
     }
 }
