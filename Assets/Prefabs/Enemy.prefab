@@ -662,6 +662,7 @@ GameObject:
   - component: {fileID: 8315600509165699553}
   - component: {fileID: 8315600509166099245}
   - component: {fileID: 895042054}
+  - component: {fileID: 1804499873006950237}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -726,6 +727,20 @@ MonoBehaviour:
   speed: 1
   minDist: 1
   target: {fileID: 0}
+--- !u!114 &1804499873006950237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8315600509166067137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8fe7db775e3b594f9f3731957d9f8c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 50
+  currentHealth: 0
 --- !u!1 &8315600509166067139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,7 +1374,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8315600509165699553}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 5.983005, y: 72.853874, z: -178.65883}
+  m_LocalEulerAnglesHint: {x: 5.9830055, y: 72.853874, z: -178.65883}
 --- !u!1 &8315600509166067161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,7 +1434,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8315600509165699553}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -84.93481, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: -84.74631, z: -90}
 --- !u!1 &8315600509166067165
 GameObject:
   m_ObjectHideFlags: 0
