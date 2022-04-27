@@ -11,10 +11,11 @@ public class Gun : MonoBehaviour
     float damageRate = 1f;
     public Transform firePoint;
     float timer;
+    AudioController audio;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio = gameObject.GetComponentInChildren<AudioController>();
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class Gun : MonoBehaviour
             {
                 timer = 0f;
                 ToFireGun();
+                audio.ShotFire();
             }
         }
     }
