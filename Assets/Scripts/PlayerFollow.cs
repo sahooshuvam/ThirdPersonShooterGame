@@ -7,6 +7,7 @@ public class PlayerFollow : MonoBehaviour
     public float speed = 20.0f;
     public float minDist = 1f;
     public Transform target;
+    Animator animator;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class PlayerFollow : MonoBehaviour
                 target = GameObject.FindWithTag("Player").GetComponent<Transform>();
             }
         }
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -26,9 +28,16 @@ public class PlayerFollow : MonoBehaviour
         transform.LookAt(target);
      
         float distance = Vector3.Distance(transform.position, target.position);
-      
+
         if (distance > minDist)
+        {
             transform.position += transform.forward * speed * Time.deltaTime;
+            animator.SetTrigger("isWalking");
+        }
+        if (distance <=1f)
+        {
+            animator.SetTrigger("isAttack");
+        }
     }
 
     public void SetTarget(Transform newTarget)
