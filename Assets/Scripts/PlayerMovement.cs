@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private float playerSpeed;
     Animator animator;
-    [SerializeField] private float playerRotateSpeed;
+    [SerializeField] private float rotateSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -20,18 +20,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputZ = Input.GetAxis("Vertical");
+        float inputX = Input.GetAxis("Horizontal") * playerSpeed;
+        float inputZ = Input.GetAxis("Vertical") * playerSpeed;
         Vector3 movement = new Vector3(inputX, 0f, inputZ);
-        controller.SimpleMove(movement * playerSpeed * Time.deltaTime);
 
         animator.SetFloat("Speed", movement.magnitude);
 
-
-        transform.Rotate(Vector3.up, inputX * playerRotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up, inputX * rotateSpeed * Time.deltaTime);
         if (inputZ != 0)
         {
-            controller.SimpleMove(transform.forward * Time.deltaTime);
+            controller.Move(transform.forward * Time.deltaTime * inputZ);
         }
+
     }
 }
